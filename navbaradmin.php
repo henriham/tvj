@@ -26,7 +26,7 @@
         
         <a class="nav-link" href="#">Tilaus</a>
         <a class="nav-link" href="kayttajat.php">Käyttäjät</a>
-        <a class="nav-link" ><?php echo "Tervetuloa ". $_SESSION["username"]; ?></a>                        
+        <a class="nav-link mx-5" ><?php echo "Tervetuloa ". $_SESSION["username"]; ?></a>                        
       </div>
     
     </div>

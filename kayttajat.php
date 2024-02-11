@@ -12,6 +12,10 @@
     
     include("conn_db.php");
     include("functions.php");
+
+    if(!isset($_SESSION["username"]) || $_SESSION["rooli"] != "Yllapitaja"){
+        header("location:index.php");
+    }
     
 ?>
     

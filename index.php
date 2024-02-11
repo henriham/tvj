@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     elseif($row["rooli"]=="Tarjoilija"){
         $_SESSION["username"]=$username;
         $_SESSION["rooli"]="Tarjoilija";
-        header("location:tarj.php");
+        header("location:tilaus.php");
     }
 
     elseif($row["rooli"]=="Yllapitaja"){
@@ -84,9 +84,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     
 
 
-    <div style="" class="container container-small w-50 p-5 mt-5 border border-dark">
+    <div style="" class="rounded container container-small w-50 p-5 mt-5 border border-dark">
     <h1>TVJ</h1> <br>
-    <form action="#" method="post">
+    <form action="#" method="post" autocomplete="off">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Käyttäjätunnus</label>
         <input type="text" name="username" required class="form-control" id="username" aria-describedby="username">
