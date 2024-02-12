@@ -8,56 +8,40 @@ include("functions.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jsTilaus.js"></script>
     <title>Document</title>
 </head>
 <body>
 <div class="table-responsive col-md-10 mx-auto">
 <?php navbar(); ?> <br>
 
-<!--  Juomat   -->
-
-<div class="card text-center rounded" style="max-width: 600px;">
-    <div class="card-body">
-        <h2 class="card-title">Juomat</h2> <br>
-                <div class="container text-center">
-                <div class="row">
-                    <div class="col-sm">
-                    <button type="button " class="btn btn-primary btn-lg">Kahvi</button>
-
+<!--  Juoma start -->
+<form class="">
+    <div class="card text-center rounded" style="max-width: 800px;">
+        <div class="card-body">
+            <h2 class="card-title">Menu</h2> <br>
+                    <div class="container text-center" nimi="juomat">
+                        <div class="row" id="js-menu">
+                        </div>
+                        
+                        
                     </div>
-                    <div class="col-sm">
-                    <button type="button" class="btn btn-primary btn-lg">Tee</button>
-
-                    </div>
-                    <div class="col-sm">
-                    <button type="button" class="btn btn-primary btn-lg">Vesi</button>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm">
-                    <button type="button" class="btn btn-primary btn-lg">Olut</button>
-
-                    </div>
-                    <div class="col-sm">
-                    <button type="button" class="btn btn-primary btn-lg">Siideri</button>
-
-                    </div>
-                    <div class="col-sm"><button type="button" class="btn btn-primary btn-lg">Cola</button>
-</div>
-            </div>
-</div>
-        
-        
-    </div>
-</div>
-<!--  Juomat end   -->
+        </div>
+</form>
+<!--  Juoma end   -->
 
 
 
-
-
+    <div class="card text-center rounded" style="max-width: 800px;">
+            <div class="card-body mx-auto">
+                <h3 class="card-title"></h3>
+                        <div class="container text-center">
+                            <div class="row" id="js-text-area">
+                            
+                            </div>
+                            
+                            
+                        </div>
 
 
 

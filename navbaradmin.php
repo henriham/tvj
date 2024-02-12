@@ -24,7 +24,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="varasto.php">Varasto</a>
         
-        <a class="nav-link" href="#">Tilaus</a>
+        <a class="nav-link" href="tilaus.php">Tilaus</a>
         <a class="nav-link" href="kayttajat.php">Käyttäjät</a>
         <a class="nav-link mx-5" ><?php echo "Tervetuloa ". $_SESSION["username"]; ?></a>                        
       </div>

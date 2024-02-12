@@ -1,5 +1,6 @@
 <?php
-
+include("conn_db.php");
+include("functions.php");
 function query($query){
 
     $res=false; # false sitä varten, että jos query ei anna tulosta
@@ -25,38 +26,32 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
     $info['data_type'] = $_POST['data_type']; // lisätään datatyyppi info muuttujaan, jotta saadaan se info vietyä js puolelle
 
     if($_POST['data_type'] == 'read'){
-        $query          = "SELECT tuotenimi, varastopaikka, kpl, tuoteid FROM tuotteet";
-        $result         = query($query);
+        $Btnquery       = "SELECT * FROM menu ORDER BY category DESC";
+        $result         = query($Btnquery);
         $info['data']   = $result;
+
+        
+        
+
+
+
     }
 
-    if($_POST['data_type'] == 'plus'){
+    if($_POST['data_type'] == 'order'){
 
-        $tuoteid        = $_POST['tuoteid'];
-        $query          = "UPDATE tuotteet SET kpl = kpl + 1 WHERE tuoteid = '$tuoteid' LIMIT 1";
+        $id        = $_POST['id'];
+        $query          = "INSERT INTO testi (text) VALUES ('$id');";
         $result         = query($query);      
     }
 
-    if($_POST['data_type'] == 'minus'){
-        $tuoteid        = $_POST['tuoteid'];
-        $query          = "UPDATE tuotteet SET kpl = kpl - 1 WHERE tuoteid = '$tuoteid' LIMIT 1";
+    
+    if($_POST['data_type'] == 'order'){
+        $id             = $_POST['id'];
+        $query          = "SELECT name FROM menu WHERE ('$id') = id ";
         $result         = query($query);
-    }
+        $info['data']   = $result;
 
-    if($_POST['data_type'] == 'delete'){
-        $tuoteid        = $_POST['tuoteid'];
-        $query          = "DELETE FROM tuotteet WHERE tuoteid = '$tuoteid'";
-        $result         = query($query);
-    }
-
-    if($_POST['data_type'] == 'save'){
-        $tuotenimi       = $_POST['tuotenimi'];
-        $varastopaikka   = $_POST['varastopaikka'];
-        $kpl             = $_POST['kpl'];
-
-        $query          = "INSERT INTO tuotteet (tuotenimi , varastopaikka, kpl) VALUES ('$tuotenimi', '$varastopaikka', '$kpl')";
-        $result         = query($query);
-        
+    
     }
 
 

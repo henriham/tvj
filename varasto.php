@@ -1,3 +1,11 @@
+<?php 
+
+include("conn_db.php");
+include("functions.php");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +15,11 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-    
-    include("conn_db.php");
-    include("functions.php");
-    
-?>
+
 
     <!-- "Lisää tuote" Modal start -->
     <div class="modal fade" id="add-new-modal" tabindex="-1" aria-labelledby="add-new-modal" aria-hidden="true">
+    
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
