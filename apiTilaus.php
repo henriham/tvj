@@ -50,10 +50,10 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
     if($_POST['data_type'] == 'order'){
 
         $id             = $_POST['id'];
-        
+        $asinfo         = $_POST['tableinfo'];
         $currentdate    = date("d.m.Y");
         $nimi           = $_SESSION["username"];
-        $query          = "INSERT INTO metatilaus (menu_id, pvm, nimi) VALUES ('$id', '$currentdate', '$nimi');";
+        $query          = "INSERT INTO metatilaus (menu_id, pvm, nimi, asinfo) VALUES ('$id', '$currentdate', '$nimi', '$asinfo');";
         $result         = query($query);      
     }
 

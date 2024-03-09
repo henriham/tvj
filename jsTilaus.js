@@ -27,6 +27,38 @@ function send_data(obj, type){ //obj=itse data, type=datatyyppi esim.del,edit jn
 };
 
 
+async function async_send_data(obj, type) {
+    const formData = new FormData();
+    for (const key in obj) {
+        formData.append(key, obj[key]);
+    }
+    formData.append('data_type', type);
+
+    try {
+        const response = await fetch('apiTilaus.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = await response.text();
+        handle_async_result(result);
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+function handle_async_result(result) {
+    console.log(result);
+    const obj = JSON.parse(result);
+    // Handle the result as needed
+}
+
+
+
 
 
 
@@ -104,5 +136,6 @@ function handle_result(result){
 function orderItem(id){
     const tableinfo = document.querySelector("#tableinfo").value // tableinfo inputin value
     send_data({id:id, tableinfo: tableinfo},'order')// tämä lisää nyt testi tableen infoa!
+    //async_send_data({ id: id, tableinfo: tableinfo }, 'order');
     
 }
