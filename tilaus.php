@@ -12,14 +12,19 @@ include("functions.php");
     <title>Document</title>
 </head>
 <body>
-<div class="table-responsive col-md-10 mx-auto">
-<?php navbar(); ?> <br>
+<div class="table-responsive col-md-10 mx-auto " style="max-width: 800px;">
+<br>
 
 <!--  Juoma start -->
 <form class="">
+<?php navbar(); ?>
     <div class="card text-center rounded" style="max-width: 800px;">
+    
         <div class="card-body">
-            <h2 class="card-title">Menu</h2> <br>
+            <label class="form-label" for="tableinfo">Asiakasinfo: </label>
+            <input id="tableinfo" name="tableinfo" class="form-control" type="text">
+            <h2 class="card-title">Menu</h2>
+            
                     <div class="container text-center" nimi="juomat">
                         <div class="row" id="js-menu">
                         </div>
@@ -32,16 +37,19 @@ include("functions.php");
 
 
 
-    <div class="card text-center rounded" style="max-width: 800px;">
-            <div class="card-body mx-auto">
-                <h3 class="card-title"></h3>
-                        <div class="container text-center">
-                            <div class="row" id="js-text-area">
+    
+            
+                
+                        <div class="container">
+                            <table class="row">
                             
-                            </div>
+                            <tbody class="js-text-area" id="js-text-area">
+
+                            </tbody>
+                           
                             
-                            
-                        </div>
+                        </div>   
+                        
 
 
 
@@ -49,6 +57,6 @@ include("functions.php");
 
 
 
-</div>
+
 </body>
 </html>

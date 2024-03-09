@@ -1,11 +1,3 @@
-<?php 
-
-include("conn_db.php");
-include("functions.php");
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +11,6 @@ include("functions.php");
 
     <!-- "Lisää tuote" Modal start -->
     <div class="modal fade" id="add-new-modal" tabindex="-1" aria-labelledby="add-new-modal" aria-hidden="true">
-    
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -73,7 +64,10 @@ include("functions.php");
 <!--                         TAULUKKO START  -->
 
 <div class="table-responsive col-md-10 mx-auto">
-<?php navbar(); ?> <br>
+    <?php
+    include("conn_db.php");
+    include("functions.php");
+    navbar(); ?>
         <h2 class="my-2 text-center">Varastohallinta</h2>
         <h4 class="my-2">Tuotteet</h4>
         <table class="table table-striped table-hover">

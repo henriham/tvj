@@ -34,7 +34,7 @@ function displayVarastoData(){
     return $result;
 }
 
-## Funtio jonka muuttujat tulevat modaali formista, näin voi lisätä tuotteita tietokantaan
+## Funktio jonka muuttujat tulevat modaali formista, näin voi lisätä tuotteita tietokantaan
 function addProduct($tuotevalue, $kplvalue, $varastopaikkavalue){
     global $conn;
         $query = "INSERT INTO tuotteet (tuotenimi, kpl, varastopaikka) VALUES('$tuotevalue', '$kplvalue', '$varastopaikkavalue')";
@@ -43,7 +43,7 @@ function addProduct($tuotevalue, $kplvalue, $varastopaikkavalue){
         return $result;
 }
 
-#!!      $num muuttuja tulee insertData.php for loopista joka antaa nimet luoduille napeille, SQL lausekkeeseen taas käytetään loopin $i SQL hussa.
+#!!      $num muuttuja tulee insertData.php for loopista joka antaa nimet luoduille napeille, SQL lausekkeeseen taas käytetään loopin $i SQL haussa.
 
 ######## -1 tietokannan tuote kpl:stä funktio ######
 function minusOne($num){

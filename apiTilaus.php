@@ -1,6 +1,9 @@
 <?php
 include("conn_db.php");
 include("functions.php");
+
+
+
 function query($query){
 
     $res=false; # false sitä varten, että jos query ei anna tulosta
@@ -36,20 +39,37 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
 
 
     }
-
+    #tämä query lisää testi tableen
     if($_POST['data_type'] == 'order'){
 
-        $id        = $_POST['id'];
+        $id             = $_POST['id'];
         $query          = "INSERT INTO testi (text) VALUES ('$id');";
+        $result         = query($query);      
+    }
+    #tämä query lisää metatilaus tableen
+    if($_POST['data_type'] == 'order'){
+
+        $id             = $_POST['id'];
+        
+        $currentdate    = date("d.m.Y");
+        $nimi           = $_SESSION["username"];
+        $query          = "INSERT INTO metatilaus (menu_id, pvm, nimi) VALUES ('$id', '$currentdate', '$nimi');";
         $result         = query($query);      
     }
 
     
-    if($_POST['data_type'] == 'order'){
+    /*if($_POST['data_type'] == 'order'){
         $id             = $_POST['id'];
-        $query          = "SELECT name FROM menu WHERE ('$id') = id ";
+        $query          = "SELECT name, COUNT(name) AS name_count FROM menu WHERE id = '$id' GROUP BY name";
         $result         = query($query);
         $info['data']   = $result;
+    */
+
+        if($_POST['data_type'] == 'order'){
+            $id             = $_POST['id'];
+            $query          = "SELECT name, COUNT(name) AS name_count FROM menu WHERE id = '$id' GROUP BY name";
+            $result         = query($query);
+            $info['data']   = $result;
 
     
     }
@@ -68,6 +88,7 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
 
 
     echo json_encode($info);
+    
 
 }
 
