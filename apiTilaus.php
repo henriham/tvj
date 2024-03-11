@@ -58,21 +58,38 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
     }
 
     
-    /*if($_POST['data_type'] == 'order'){
-        $id             = $_POST['id'];
-        $query          = "SELECT name, COUNT(name) AS name_count FROM menu WHERE id = '$id' GROUP BY name";
-        $result         = query($query);
-        $info['data']   = $result;
-    */
-
-        if($_POST['data_type'] == 'order'){
-            $id             = $_POST['id'];
-            $query          = "SELECT name, COUNT(name) AS name_count FROM menu WHERE id = '$id' GROUP BY name";
-            $result         = query($query);
-            $info['data']   = $result;
-
     
+
+    if($_POST['data_type'] == 'order'){
+        $asinfo          = $_POST['tableinfo'];
+        $id             = $_POST['id'];
+        $query          = "SELECT menu.name, COUNT(CASE WHEN '$asinfo' = metatilaus.asinfo THEN metatilaus.menu_id END) AS name_count, menu.id  FROM menu
+        LEFT JOIN metatilaus ON menu.id = metatilaus.menu_id
+        WHERE menu.id = '$id' AND '$asinfo' = metatilaus.asinfo GROUP BY name";
+        $result         = query($query);
+        $info['data']   = $result;    
     }
+
+    if($_POST['data_type'] == 'order1'){
+        $asinfo          = $_POST['tableinfo'];
+        $id             = $_POST['id'];
+        $query          = "SELECT menu.name, COUNT(CASE WHEN '$asinfo' = metatilaus.asinfo THEN metatilaus.menu_id END) AS name_count, menu.id  FROM menu
+        LEFT JOIN metatilaus ON menu.id = metatilaus.menu_id
+        WHERE menu.id = '$id' AND '$asinfo' = metatilaus.asinfo GROUP BY name";
+        $result         = query($query);
+        $info['data']   = $result;    
+    }
+    
+
+    if ($_POST['data_type'] == 'minus') {
+        $asinfo          = $_POST['tableinfo'];
+        $id              = $_POST['id'];
+        $query = "DELETE FROM metatilaus WHERE menu_id = '$id' AND '$asinfo' = metatilaus.asinfo LIMIT 1";
+        #$query = "DELETE FROM metatilaus";
+        $result = query($query);
+        $info['data']   = $result;
+    }
+
 
 
 
