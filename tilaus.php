@@ -8,7 +8,9 @@ include("functions.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="jsTilaus.js"></script>
+    <script src="jsTilaus.js">
+        
+    </script>
     <title>Document</title>
 </head>
 <body>
@@ -47,7 +49,7 @@ include("functions.php");
                                         <th>Tuote</th>
                                         <th>  </th>
                                         <th>kpl</th>
-                                        <th><button class="btn btn-success" >tilaa</button></th>
+                                        <th><button onclick="getReceipt()" id="receiptBtn" class="btn btn-success" type="button" >tilaa</button></th>
                                     </tr>
                                 </thead>
                                 <tbody class="js-text-area" id="js-text-area">
@@ -60,12 +62,14 @@ include("functions.php");
 
 
 
+
 <script>
 
 
 
 
-    
+
+
   // Select the target node
 const targetNode = document.getElementById('js-text-area');
 

@@ -19,6 +19,7 @@ function query($query){
         }                                           #muuttujaan ja returnataan
         }                                           #joka luupin päätteeksi
     }
+    
     return $res;
 };
 
@@ -39,13 +40,21 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
 
 
     }
-    #tämä query lisää testi tableen
-    if($_POST['data_type'] == 'order'){
 
-        $id             = $_POST['id'];
-        $query          = "INSERT INTO testi (text) VALUES ('$id');";
-        $result         = query($query);      
+    if($_POST['data_type'] == 'receipt'){
+        $asinfo         = $_POST['tableinfo'];
+        
+        
+
+        $query = "SELECT DISTINCT menu.name, COUNT(CASE WHEN '$asinfo' = metatilaus.asinfo THEN metatilaus.menu_id END) AS name_count, menu.id, asinfo, nimi, pvm  FROM menu
+        LEFT JOIN metatilaus ON menu.id = metatilaus.menu_id
+        WHERE '$asinfo' = metatilaus.asinfo GROUP BY id";
+        
+
+        $result = query($query);
+        $info['data']   = $result;
     }
+    
     #tämä query lisää metatilaus tableen
     if($_POST['data_type'] == 'order'){
 
@@ -63,22 +72,14 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
     if($_POST['data_type'] == 'order'){
         $asinfo          = $_POST['tableinfo'];
         $id             = $_POST['id'];
-        $query          = "SELECT menu.name, COUNT(CASE WHEN '$asinfo' = metatilaus.asinfo THEN metatilaus.menu_id END) AS name_count, menu.id  FROM menu
+        $query          = "SELECT DISTINCT menu.name, COUNT(CASE WHEN '$asinfo' = metatilaus.asinfo THEN metatilaus.menu_id END) AS name_count, menu.id  FROM menu
         LEFT JOIN metatilaus ON menu.id = metatilaus.menu_id
         WHERE menu.id = '$id' AND '$asinfo' = metatilaus.asinfo GROUP BY name";
         $result         = query($query);
         $info['data']   = $result;    
     }
 
-    if($_POST['data_type'] == 'order1'){
-        $asinfo          = $_POST['tableinfo'];
-        $id             = $_POST['id'];
-        $query          = "SELECT menu.name, COUNT(CASE WHEN '$asinfo' = metatilaus.asinfo THEN metatilaus.menu_id END) AS name_count, menu.id  FROM menu
-        LEFT JOIN metatilaus ON menu.id = metatilaus.menu_id
-        WHERE menu.id = '$id' AND '$asinfo' = metatilaus.asinfo GROUP BY name";
-        $result         = query($query);
-        $info['data']   = $result;    
-    }
+
     
 
     if ($_POST['data_type'] == 'minus') {
@@ -87,7 +88,16 @@ if(count($_POST) > 0){ // KUN POST MUUTTUJAAN TULEE LIIKETTÄ
         $query = "DELETE FROM metatilaus WHERE menu_id = '$id' AND '$asinfo' = metatilaus.asinfo LIMIT 1";
         #$query = "DELETE FROM metatilaus";
         $result = query($query);
-        $info['data']   = $result;
+        
+    }
+    if($_POST['data_type'] == 'minus'){
+        $asinfo          = $_POST['tableinfo'];
+        $id             = $_POST['id'];
+        $query          = "SELECT DISTINCT menu.name, COUNT(CASE WHEN '$asinfo' = metatilaus.asinfo THEN metatilaus.menu_id END) AS name_count, menu.id  FROM menu
+        LEFT JOIN metatilaus ON menu.id = metatilaus.menu_id
+        WHERE menu.id = '$id' AND '$asinfo' = metatilaus.asinfo GROUP BY name";
+        $result         = query($query);
+        $info['data']   = $result;    
     }
 
 
